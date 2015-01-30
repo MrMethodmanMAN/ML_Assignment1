@@ -1,0 +1,151 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+
+public class CreatArff 
+{
+
+	public static void assignToRowArray(storage storage)
+	{	
+		
+		String[] tempString = new String[1];
+		tokeniser tk = new tokeniser();
+			int i = 0;
+			while( i < 5)
+			{
+				if(i == 0)
+				{			 
+					tempString = storage.getBody_length();
+					String test = tempString[i].toString();
+
+					//StringTokenizer strings = new StringTokenizer(test,",");
+					//fString[i] =tempString[i];
+					tempString = tk.method(test);
+					 storage.setBody_length(tempString);
+					//String temp = tempString[0];
+					//StringTokenizer strings = new StringTokenizer(temp," , ");
+					//fString[i] = strings.nextToken();
+					//	System.out.println(Arrays.toString(fString));			
+				}
+				if(i == 1)
+				{
+					tempString = storage.getBody_width();			
+					String test = tempString[0].toString();
+
+					tempString = tk.method(test);
+					 storage.setBody_width(tempString);
+	
+				}
+
+				if(i == 2)
+				{
+					tempString = storage.getSex();		
+					String test = tempString[0].toString();
+
+					tempString = tk.method(test);
+					 storage.setSex(tempString);
+					
+				}
+
+				if(i == 3)
+				{
+					tempString = storage.getWing_length();		
+					String test = tempString[0].toString();
+
+					tempString = tk.method(test);
+					 storage.setWing_length(tempString);
+	
+				}
+
+				if(i == 4)
+				{
+					tempString = storage.getWing_width();		
+					String test = tempString[0].toString();
+
+					tempString = tk.method(test);
+					storage.setWing_width(tempString);
+				}	
+
+				i++;
+				//System.out.println(Arrays.toString(fString));
+			}
+			makeFstring(storage);
+		
+			
+		}
+		
+	public static void makeFstring(storage storage)
+	{
+		//create a series of new arrays 5 per column
+				String fString =  " ";
+				
+		
+		String[] Body_length = storage.getBody_length();
+		String[] Body_width = storage.getBody_width();
+		String[] Sex = storage.getSex();		
+		String[] Wing_length = storage.getWing_length();
+		String[] Wing_width = storage.getWing_width();
+		
+		
+		
+		
+		PrintWriter writer = null;
+		try
+		{
+			writer = new PrintWriter("C:\\Users\\stebra2\\Weka_data\\test.arff", "UTF-8");
+		} 
+		catch (FileNotFoundException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (UnsupportedEncodingException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//write arff headings
+		writer.println("@relation Test");
+		writer.println("@attribute sex{Male, Female}");
+		writer.println("@attribute wing-length numeric");
+		writer.println("@attribute wing-width numeric");
+		writer.println("@attribute body-length numeric");
+		writer.println("@attribute body-width numeric");
+		writer.println("@data");	
+		
+		
+		for(int i = 0; i < 100; i++)
+		{
+					
+			fString += Sex[i]+", ";
+			fString += Wing_length[i]+", ";
+			fString += Body_width[i]+", ";
+			fString += Body_length[i] +", ";		
+			fString += Wing_width[i];
+			
+			//System.out.println("top offering " + fString );
+			writer.println(fString);
+			fString = " ";
+		}
+		
+		System.out.println("+++++" + Sex.length);
+		System.out.println(Wing_length.length);
+		System.out.println(Body_width.length);
+		System.out.println(Body_length.length);
+		System.out.println(Wing_width.length);
+		System.out.println(fString);
+		
+		//writer.println("The second line");
+		writer.close();
+	}
+
+	public CreatArff() 
+	{
+		// TODO Auto-generated constructor stub
+	}
+
+}

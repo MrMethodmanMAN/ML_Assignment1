@@ -1,0 +1,42 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+
+public class tokeniser 
+{
+	public static void main(String[] args)
+	{
+		String str = "this is a string, split by a string tokeniser, taken from the internet";
+
+	}
+
+	public  String[]  method(String str)
+	{
+	//	StringTokenizer st = new StringTokenizer(str);
+		String[] lineArray = new String[str.length()];
+		
+		 StringTokenizer strings = new StringTokenizer(str,",");
+
+		int i = 0;
+		while(strings.hasMoreTokens())
+		{
+			lineArray[i] = (String) strings.nextToken();
+			System.out.println(lineArray[i]);
+			i++;
+		}
+		//System.out.println(Arrays.toString(lineArray));
+		return lineArray;
+	}
+	
+	public String[] tokenizer(String[] array)
+	{
+		
+		return array; 
+	}
+	
+
+
+
+}
+

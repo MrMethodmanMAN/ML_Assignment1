@@ -1,0 +1,84 @@
+import java.util.Arrays;
+
+
+public class storage 
+{
+	String[] wing_length = new String[1];	
+	String[] wing_width = new String[1];
+	String[] sex = new String[1];
+	String[] body_length = new String[1];
+	String[] body_width = new String[1];
+	
+	public storage(String[] wing_length, String[] wing_width, String[] sex,
+			String[] body_length, String[] body_width) 
+	{
+		super();
+		this.wing_length = wing_length;
+		this.wing_width = wing_width;
+		this.sex = sex;
+		this.body_length = body_length;
+		this.body_width = body_width;
+	}
+	
+	@Override
+	public String toString() {
+		return "storage [wing_length=" + Arrays.toString(wing_length)
+				+ ", wing_width=" + Arrays.toString(wing_width) + ", sex="
+				+ Arrays.toString(sex) + ", body_length="
+				+ Arrays.toString(body_length) + ", body_width="
+				+ Arrays.toString(body_width) + ", getWing_length()="
+				+ Arrays.toString(getWing_length()) + ", getWing_width()="
+				+ Arrays.toString(getWing_width()) + ", getSex()="
+				+ Arrays.toString(getSex()) + ", getBody_length()="
+				+ Arrays.toString(getBody_length()) + ", getBody_width()="
+				+ Arrays.toString(getBody_width()) + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
+
+	public storage() 
+	{
+		// TODO Auto-generated constructor stub
+	}
+
+	public String[] getWing_length() {
+		return wing_length;
+	}
+
+	public void setWing_length(String[] wing_length) {
+		this.wing_length = wing_length;
+	}
+
+	public String[] getWing_width() {
+		return wing_width;
+	}
+
+	public void setWing_width(String[] wing_width) {
+		this.wing_width = wing_width;
+	}
+
+	public String[] getSex() {
+		return sex;
+	}
+
+	public void setSex(String[] sex) {
+		this.sex = sex;
+	}
+
+	public String[] getBody_length() {
+		return body_length;
+	}
+
+	public void setBody_length(String[] body_length) {
+		this.body_length = body_length;
+	}
+
+	public String[] getBody_width() {
+		return body_width;
+	}
+
+	public void setBody_width(String[] body_width) {
+		this.body_width = body_width;
+	}
+} 
+

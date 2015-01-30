@@ -1,0 +1,108 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+
+public class TxT_to_Arff 
+{
+	static tokeniser TE = new tokeniser();
+	static CreatArff Arff = new CreatArff();
+	static storage storage = new storage();
+
+
+	public static void main(String[] args)
+	{
+		readInFile();
+		CreatArff.assignToRowArray(storage);
+
+	}
+
+	public static String tokeniseInput(String line)
+	{
+		line = "THis is indeed a text";
+		StringTokenizer st = new StringTokenizer(line);
+		while(st.hasMoreTokens());
+		{
+			System.out.println(st.nextToken());
+		}
+		return line;
+	}
+
+	public static void readInFile()
+	{
+		//read in the file
+		String horseFile = "C:\\Users\\stebra2\\Desktop\\ML_Data\\horsefly.txt";
+
+		try
+		{
+			//create object of fileReader
+			FileReader inputfile = new FileReader(horseFile);
+
+			//insaniate the BufferedReader Class
+			BufferedReader bufferReader = new BufferedReader(inputfile);
+
+			//variable to hold lines of data
+			String line;
+
+			//read file line by line
+			int i = 0; 
+			while((line = bufferReader.readLine()) != null)
+			{
+				System.out.println("line :" + line);
+
+				if(line.length() > 0)
+				{
+
+
+
+					String[] line2 = {line};
+
+					if(i == 0)
+					{
+						storage.setBody_length(line2);
+						//System.out.println(Arrays.toString(storage.body_length));
+					}
+
+					else if(i == 1)
+					{
+						storage.setBody_width(line2);
+						//System.out.println(Arrays.toString(storage.body_width));
+					}
+
+					else if(i == 2)
+					{
+						storage.setSex(line2);
+						//System.out.println(Arrays.toString(storage.sex));
+					}
+
+					else if(i == 3)
+					{
+						storage.setWing_length(line2);
+						//System.out.println(Arrays.toString(storage.wing_length));
+					}
+
+					else if (i == 4)
+					{
+						storage.setWing_width(line2);
+						//System.out.println(Arrays.toString(storage.wing_width));
+					}
+					//TE.method(line);
+					i++;
+				}
+			}
+			//close buffer reader
+			bufferReader.close();
+
+
+		}
+		catch(Exception e)
+		{
+
+			System.out.println("Error while reading file line by line:" + e.getMessage());
+		}
+
+	}
+
+
+}
